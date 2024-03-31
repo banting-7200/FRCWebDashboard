@@ -1,3 +1,11 @@
-.teamNameContainer{
+* {
+    font-family: "JetBrains Mono", monospace;
+}
+
+.teamNameContainer {
     font-size: 10rem;
+}
+
+.label{
+    font-style: italic;
 }
