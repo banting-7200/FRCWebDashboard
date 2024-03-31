@@ -2,10 +2,48 @@
     font-family: "JetBrains Mono", monospace;
 }
 
-.teamNameContainer {
-    font-size: 10rem;
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.label{
+
+.mainContainer {
+    flex-direction: row;
+    margin: auto;
+}
+
+
+
+.teamNameContainer {
+    font-size: 7rem;
+}
+
+
+.label {
     font-style: italic;
+}
+
+.leftHand {
+    margin-right: 0.6rem;
+    flex-shrink: 0;
+}
+
+.rightHand {
+    flex-shrink: 0;
+}
+
+
+@media screen and (max-width: 768px) {
+    .mainContainer {
+        flex-direction: column;
+    }
+
+    .leftHand {
+        order: -1;
+        margin-right: 0rem;
+        margin-bottom: .7rem;
+    }
+
 }
