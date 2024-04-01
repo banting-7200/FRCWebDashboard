@@ -2,6 +2,21 @@
     font-family: "JetBrains Mono", monospace;
 }
 
+html, body {
+    height: 100%;
+}
+
+.cornerContainer{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flexbox;
+}
+
+.settingsContainer{
+    margin-right: 10px;
+}
+
 body {
     display: flex;
     justify-content: center;
