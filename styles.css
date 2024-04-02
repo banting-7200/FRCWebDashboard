@@ -2,18 +2,19 @@
     font-family: "JetBrains Mono", monospace;
 }
 
-html, body {
+html,
+body {
     height: 100%;
 }
 
-.cornerContainer{
+.cornerContainer {
     position: absolute;
     top: 0px;
     left: 0px;
     display: flexbox;
 }
 
-.settingsContainer{
+.settingsContainer {
     margin-right: 10px;
 }
 
@@ -49,16 +50,37 @@ body {
     flex-shrink: 0;
 }
 
+@media screen and (max-width: 900px) {
+    .body {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
-@media screen and (max-width: 768px) {
+    .cornerContainer,
+    .mainContainer {
+        width: 100%;
+    }
+
+    .cornerContainer {
+        order: -1;
+    }
+
     .mainContainer {
         flex-direction: column;
+        margin-top: 4rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-bottom: 1rem;
     }
 
     .leftHand {
-        order: -1;
         margin-right: 0rem;
         margin-bottom: .7rem;
     }
 
+    .leftHand,
+    .rightHand {
+        width: 100%;
+    }
 }

@@ -39,18 +39,27 @@
                 <div class="modal-body">
                     <form>
                         <div class="input-group mb-3 ">
-                            <span class="label input-group-text " id="basic-addon1">Team Number</span>
-                            <input class="form-control " type="text" placeholder="example: frc####">
+                            <span class="label input-group-text " id="">Team Number</span>
+                            <input class="form-control " type="text" id="teamNumber" placeholder="example: ####">
                         </div>
                         <div class="input-group mb-3 ">
-                            <span class="label input-group-text " id="basic-addon1">TBA API Key</span>
-                            <input class="form-control " type="text" placeholder="The Blue Alliance API Key">
+                            <span class="label input-group-text " id="">Year of Comp</span>
+                            <input class="form-control " type="text" id="year" placeholder="example: 2024">
                         </div>
+                        <div class="input-group mb-3 ">
+                            <span class="label input-group-text " id="">Event Name</span>
+                            <input class="form-control " type="text" id="eventName" placeholder="example: onham">
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="modeSwitcher">
+                            <label class="form-check-label" for="modeSwitcher"> Light mode </label>
+                          </div>
+                          
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Reload App</button>
+                    <button type="button" class="btn btn-primary" id="reloadApp">Reload App</button>
                 </div>
             </div>
         </div>
@@ -63,7 +72,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="h3">Coming Soon...</div>
+                    <div class="h3">Coming Soon... :)</div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -75,12 +84,12 @@
         <div class="leftHand rounded-4 shadow p-3 rounded-4 border border-4 d-inline">
             <div class="teamContainer">
                 <div class="label teamLabelContainer h3 text-center">Team</div>
-                <div class="teamNameContainer display-2 text-center" id="teamName"><strong>7200</strong></div>
+                <div class="teamNameContainer display-2 text-center" id="teamNum"><strong>N/A</strong></div>
             </div>
             <hr>
             <div class="rankContainer">
                 <div class="label rankLabelContainer h3 text-center">Rank</div>
-                <div class="teamNameContainer display-1 text-center" id="teamName"><strong>1</strong></div>
+                <div class="teamNameContainer display-1 text-center" id="rank"><strong>N/A</strong></div>
             </div>
         </div>
         <div class="rightHand rounded-4 shadow p-3 rounded-4 border border-4 mw-5 d-inline min-vw-10">
@@ -96,9 +105,9 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>N/A</td>
-                                <td>N/A</td>
-                                <td>N/A</td>
+                                <td id="wins">N/A</td>
+                                <td id="ties">N/A</td>
+                                <td id="losses">N/A</td>
                             </tr>
                         </tbody>
                     </table>
@@ -109,22 +118,22 @@
                 <div class="epaScoresContainer">
                     <div class="input-group mb-3 ">
                         <span class="label input-group-text " id="basic-addon1">EPA</span>
-                        <input class="form-control " type="text" value="N/A" aria-label="Disabled input example"
+                        <input class="form-control" id="epa" type="text" value="N/A" aria-label="Disabled input example"
                             disabled readonly>
                     </div>
                     <div class="input-group mb-3">
                         <span class="label input-group-text" id="basic-addon1">Auto Points</span>
-                        <input class="form-control" type="text" value="N/A" aria-label="Disabled input example" disabled
+                        <input class="form-control" id="autoPoints" type="text" value="N/A" aria-label="Disabled input example" disabled
                             readonly>
                     </div>
                     <div class="input-group mb-3 ">
                         <span class="label input-group-text " id="basic-addon1">Teleop Points</span>
-                        <input class="form-control " type="text" value="N/A" aria-label="Disabled input example"
+                        <input class="form-control " id="telePoints" type="text" value="N/A" aria-label="Disabled input example"
                             disabled readonly>
                     </div>
                     <div class="input-group mb-3">
                         <span class="label input-group-text" id="basic-addon1">Endgame Points</span>
-                        <input class="form-control" type="text" value="N/A" aria-label="Disabled input example" disabled
+                        <input class="form-control" id="endgamePoints" type="text" value="N/A" aria-label="Disabled input example" disabled
                             readonly>
                     </div>
                 </div>
