@@ -37,7 +37,6 @@ let lowerRankIcon = document.getElementById('lowerRank');
 // Images
 
 let robotImage = document.getElementById('robotImage');
-const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 
 document.addEventListener("DOMContentLoaded", function () {
     resizestatsInfo();
@@ -324,18 +323,7 @@ function setBackgrounds(identifier, value, ranking) {
 }
 
 function setImage(data) {
-    // robotImage.src = proxyUrl + data[1].direct_url;
-    fetch( data[1].direct_url)
-        .then(response => response.blob())
-        .then(blob => {
-            // Create an object URL for the blob
-            const objectURL = URL.createObjectURL(blob);
-            // Set the image source
-            robotImage.src = objectURL;
-        })
-        .catch(error => {
-            console.error('Error fetching image:', error);
-        });
+    robotImage.src = data[1].direct_url;
 }
 
 
