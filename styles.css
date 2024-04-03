@@ -60,6 +60,13 @@ body {
     margin-right: 10px;
 }
 
+.qrCodeContainer{
+    margin-right: 10px;
+    text-decoration: none;
+}
+.qrCodeContainer span{
+    text-decoration: none;
+}
 
 
 

@@ -38,6 +38,20 @@ let lowerRankIcon = document.getElementById('lowerRank');
 
 let robotImage = document.getElementById('robotImage');
 
+// URL based Search
+
+const searchParams = new URLSearchParams(window.location.search);
+
+// qr code shenanigans
+
+
+let qrButton = document.getElementById('qrCodeExport');
+qrButton.style.color = "white";
+
+
+
+checkURLParams();
+
 document.addEventListener("DOMContentLoaded", function () {
     resizestatsInfo();
     window.addEventListener("resize", resizestatsInfo);
@@ -68,6 +82,7 @@ setInterval(() => {
 }, 600000);
 
 function getTeamData(teamNumber, yearNumber, eventName) {
+    qrButton.href = "https://api.qrserver.com/v1/create-qr-code/?color=000000&bgcolor=FFFFFF&data=" + encodeURIComponent("https://banting-7200.github.io/FRCWebDashboard?team=" + teamNumber + "&year=" + yearNumber + "&event=" + eventName) + "%0A&qzone=1&margin=0&size=400x400&ecc=L";
     const apiKey = 'ZYBxNxrdFx8PfRxwTj5awXIFyWCsR9Rz1xkunI9KiPq7GDn4g5bU25KKGKyeqQTO';
 
     const requestOptions = {
@@ -142,6 +157,7 @@ function setBlueAlliance(data) {
 }
 
 function setStatbotics(data) {
+    teamNum.innerHTML = data.team;
     checkEPA(data);
     checkAutoPoints(data);
     checkTeleopPoints(data);
@@ -159,9 +175,11 @@ function setStatbotics(data) {
 document.getElementById('modeSwitcher').addEventListener('click', () => {
     if (document.documentElement.getAttribute('data-bs-theme') == 'dark') {
         document.documentElement.setAttribute('data-bs-theme', 'light')
+        document.getElementById('qrCodeExport').style.color = "black";
     }
     else {
         document.documentElement.setAttribute('data-bs-theme', 'dark')
+        document.getElementById('qrCodeExport').style.color = "white";
     }
 })
 
@@ -327,6 +345,11 @@ function setImage(data) {
     console.log(data[1].direct_url);
     document.getElementById('robotImageID').src = data[1].direct_url;
 }
-
-
+function checkURLParams() {
+    if (searchParams.has('event') && searchParams.has('team') && searchParams.has('year')) {
+        // teamNum.innerHTML = searchParams.get('team');
+        getTeamData(searchParams.get('team'), searchParams.get('year'), searchParams.get('event'));
+        qrButton.href = "https://api.qrserver.com/v1/create-qr-code/?color=000000&bgcolor=FFFFFF&data=" + encodeURIComponent("https://banting-7200.github.io/FRCWebDashboard?team=" + searchParams.get('team') + "&year=" + searchParams.get('year') + "&event=" + searchParams.get('event')) + "%0A&qzone=1&margin=0&size=400x400&ecc=L";
+    }
+}
 
