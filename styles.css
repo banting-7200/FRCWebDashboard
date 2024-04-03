@@ -41,13 +41,22 @@ body {
     font-style: italic;
 }
 
-.leftHand {
+.generalInfo {
     margin-right: 0.6rem;
     flex-shrink: 0;
 }
 
-.rightHand {
+.statsInfo {
     flex-shrink: 0;
+}
+
+.icons {
+    font-size: 1002rem;
+    transform: translateY(-130%);
+}
+
+.reloadContainer {
+    margin-right: 10px;
 }
 
 @media screen and (max-width: 900px) {
@@ -74,13 +83,13 @@ body {
         padding-bottom: 1rem;
     }
 
-    .leftHand {
+    .generalInfo {
         margin-right: 0rem;
         margin-bottom: .7rem;
     }
 
-    .leftHand,
-    .rightHand {
+    .generalInfo,
+    .statsInfo {
         width: 100%;
     }
 }
