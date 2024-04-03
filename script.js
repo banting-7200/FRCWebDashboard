@@ -323,7 +323,9 @@ function setBackgrounds(identifier, value, ranking) {
 }
 
 function setImage(data) {
-    robotImage.src = data[1].direct_url;
+    // robotImage.src = data[1].direct_url;
+    console.log(data[1].direct_url);
+    document.getElementById('robotImageID').src = data[1].direct_url;
 }
 
 
