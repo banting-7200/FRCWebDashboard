@@ -34,9 +34,10 @@ let sameRankIcon = document.getElementById('sameRank');
 let higherRankIcon = document.getElementById('higherRank');
 let lowerRankIcon = document.getElementById('lowerRank');
 
+// Images
 
-
-
+let robotImage = document.getElementById('robotImage');
+const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 
 document.addEventListener("DOMContentLoaded", function () {
     resizestatsInfo();
@@ -45,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function resizestatsInfo() {
         var generalInfoHeight = document.querySelector(".generalInfo").offsetHeight;
         document.querySelector(".statsInfo").style.height = generalInfoHeight + "px";
+        document.querySelector(".robotImageContainer").style.height = generalInfoHeight + "px";
     }
 });
 
@@ -67,8 +69,7 @@ setInterval(() => {
 }, 600000);
 
 function getTeamData(teamNumber, yearNumber, eventName) {
-    const apiKey = ' ZYBxNxrdFx8PfRxwTj5awXIFyWCsR9Rz1xkunI9KiPq7GDn4g5bU25KKGKyeqQTO ';
-    const apiUrl = 'https://www.thebluealliance.com/api/v3/team/frc' + teamNumber + '/event/' + yearNumber + eventName + '/status';
+    const apiKey = 'ZYBxNxrdFx8PfRxwTj5awXIFyWCsR9Rz1xkunI9KiPq7GDn4g5bU25KKGKyeqQTO';
 
     const requestOptions = {
         method: 'GET',
@@ -78,7 +79,7 @@ function getTeamData(teamNumber, yearNumber, eventName) {
         },
     };
 
-    fetch(apiUrl, requestOptions)
+    fetch('https://www.thebluealliance.com/api/v3/team/frc' + teamNumber + '/event/' + yearNumber + eventName + '/status', requestOptions)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response reported as not ok!!!');
@@ -106,6 +107,21 @@ function getTeamData(teamNumber, yearNumber, eventName) {
             console.error('Fetching Error:', error);
         });
 
+    fetch("https://www.thebluealliance.com/api/v3/team/frc" + teamNumber + "/media/" + yearNumber, requestOptions)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response reported as not ok!!!');
+            }
+            return response.json();
+        })
+        .then(data => {
+            setImage(data);
+        })
+        .catch(error => {
+            console.error('Fetching Error:', error);
+        });
+
+
 
 }
 
@@ -119,11 +135,11 @@ function setBlueAlliance(data) {
     wins.innerHTML = data.qual.ranking.record.wins;
     ties.innerHTML = data.qual.ranking.record.ties;
     losses.innerHTML = data.qual.ranking.record.losses;
-    unfade(teamNum);
-    unfade(currentRank);
-    unfade(wins);
-    unfade(ties);
-    unfade(losses);
+    fadeAnimation(teamNum);
+    fadeAnimation(currentRank);
+    fadeAnimation(wins);
+    fadeAnimation(ties);
+    fadeAnimation(losses);
 }
 
 function setStatbotics(data) {
@@ -135,10 +151,10 @@ function setStatbotics(data) {
     autoPoints.value = data.epa.breakdown.auto_points.mean;
     telePoints.value = data.epa.breakdown.teleop_points.mean;
     endgamePoints.value = data.epa.breakdown.endgame_points.mean;
-    unfade(epa);
-    unfade(autoPoints);
-    unfade(telePoints);
-    unfade(endgamePoints);
+    fadeAnimation(epa);
+    fadeAnimation(autoPoints);
+    fadeAnimation(telePoints);
+    fadeAnimation(endgamePoints);
 }
 
 document.getElementById('modeSwitcher').addEventListener('click', () => {
@@ -151,7 +167,7 @@ document.getElementById('modeSwitcher').addEventListener('click', () => {
 })
 
 
-function unfade(element) {
+function fadeAnimation(element) {
     var op = 0.1;  // initial opacity
     var timer = setInterval(function () {
         if (op >= 1) {
@@ -305,6 +321,21 @@ function setBackgrounds(identifier, value, ranking) {
             });
         }
     }
-
 }
+
+function setImage(data) {
+    // robotImage.src = proxyUrl + data[1].direct_url;
+    fetch( data[1].direct_url)
+        .then(response => response.blob())
+        .then(blob => {
+            // Create an object URL for the blob
+            const objectURL = URL.createObjectURL(blob);
+            // Set the image source
+            robotImage.src = objectURL;
+        })
+        .catch(error => {
+            console.error('Error fetching image:', error);
+        });
+}
+
 
