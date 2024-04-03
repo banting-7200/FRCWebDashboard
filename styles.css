@@ -96,7 +96,7 @@ body {
     }
 
     .cornerContainer,
-    .mainContainer {
+    .mainContainer, .robotImageContainer {
         width: 100%;
     }
 
@@ -114,6 +114,11 @@ body {
 
     .generalInfo {
         margin-right: 0rem;
+        margin-bottom: .7rem;
+    }
+
+    .statsInfo{
+        margin-right: 0px;
         margin-bottom: .7rem;
     }
 
