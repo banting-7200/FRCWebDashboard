@@ -60,6 +60,25 @@ body {
     margin-right: 10px;
 }
 
+
+.robotImageContainer {
+    width: 400px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border: 1px solid black;
+}
+
+.robotImageContainer img {
+    width: 100%;
+    object-fit: cover;
+    vertical-align: middle;
+    border-radius: 10px;
+}
+
+
 @media screen and (max-width: 900px) {
     .body {
         display: flex;
