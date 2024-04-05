@@ -51,6 +51,14 @@ qrButton.style.color = "white";
 
 let toasts = document.getElementById('toast-container');
 
+// Time and Date variables
+
+let today = new Date();
+let todayDate = today.toString();
+let timeHours = parseInt(today.getHours());
+let timeMinutes = today.getMinutes();
+let timeSeconds = today.getSeconds();
+
 // Initialize functions
 
 checkURLParams();
@@ -341,12 +349,6 @@ function checkURLParams() {
     }
 }
 
-function checkResponse(response) {
-    if (response.ok) {
-
-    }
-}
-
 function errorToast(message, delay) {
     var toast = document.createElement('div');
     toast.classList.add('toast');
@@ -369,7 +371,7 @@ function errorToast(message, delay) {
 
 
     var toastHeaderSmall = document.createElement('small');
-    toastHeaderSmall.innerText = "timer";
+    toastHeaderSmall.innerText = today.getHours() + ":"+ today.getMinutes() + ":" + today.getSeconds();
 
     var toastHeaderCloseButton = document.createElement('button');
     toastHeaderCloseButton.type = "button";
@@ -423,7 +425,7 @@ function successToast(message, delay) {
 
 
     var toastHeaderSmall = document.createElement('small');
-    toastHeaderSmall.innerText = "timer";
+    toastHeaderSmall.innerText = today.getHours() + ":"+ today.getMinutes() + ":" + today.getSeconds();
 
     var toastHeaderCloseButton = document.createElement('button');
     toastHeaderCloseButton.type = "button";
@@ -476,7 +478,7 @@ function notifiationToast(message, delay) {
 
 
     var toastHeaderSmall = document.createElement('small');
-    toastHeaderSmall.innerText = "timer";
+    toastHeaderSmall.innerText = today.getHours() + ":"+ today.getMinutes() + ":" + today.getSeconds();
 
     var toastHeaderCloseButton = document.createElement('button');
     toastHeaderCloseButton.type = "button";
@@ -517,6 +519,3 @@ function checkWindowWidth() {
     }
 
 }
-
-// errorToast("Network Fetch has failed", 5000);
-// notifiationToast("Queing in 5 minutes!", 5000);
