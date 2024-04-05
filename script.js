@@ -88,7 +88,7 @@ setInterval(() => {
 function getTeamData(teamNumber, yearNumber, eventName) {
     qrButton.href = "https://api.qrserver.com/v1/create-qr-code/?color=000000&bgcolor=FFFFFF&data=" + encodeURIComponent("https://banting-7200.github.io/FRCWebDashboard?team=" + teamNumber + "&year=" + yearNumber + "&event=" + eventName) + "%0A&qzone=1&margin=0&size=400x400&ecc=L";
     const apiKey = 'ZYBxNxrdFx8PfRxwTj5awXIFyWCsR9Rz1xkunI9KiPq7GDn4g5bU25KKGKyeqQTO';
-    
+
     const requestOptions = {
         method: 'GET',
         headers: {
@@ -228,72 +228,57 @@ function checkRank(data) {
 
 
 function checkEPA(data) {
-    if (previousEpa != -1) {
-        if (previousEpa > data.epa.breakdown.total_points.mean) {
-            epa.innerHTML = data.epa.breakdown.total_points.mean;
-            previousEpa = data.epa.breakdown.total_points.mean;
-            setBackgrounds('identifierEPA', 'epa', 'down');
-        } else if (previousEpa < data.epa.breakdown.total_points.mean) {
-            epa.innerHTML = data.epa.breakdown.total_points.mean;
-            previousEpa = data.epa.breakdown.total_points.mean;
-            setBackgrounds('identifierEPA', 'epa', 'up');
-        } else {
-            epa.innerHTML = data.epa.breakdown.total_points.mean;
-        }
+    if (previousEpa > data.epa.breakdown.total_points.mean) {
+        epa.innerHTML = data.epa.breakdown.total_points.mean;
+        previousEpa = data.epa.breakdown.total_points.mean;
+        setBackgrounds('identifierEPA', 'epa', 'down');
+    } else if (previousEpa < data.epa.breakdown.total_points.mean) {
+        epa.innerHTML = data.epa.breakdown.total_points.mean;
+        previousEpa = data.epa.breakdown.total_points.mean;
+        setBackgrounds('identifierEPA', 'epa', 'up');
     } else {
         epa.innerHTML = data.epa.breakdown.total_points.mean;
     }
 }
 
 function checkAutoPoints(data) {
-    if (previousAutoPoints != -1) {
-        if (previousAutoPoints > data.epa.breakdown.auto_points.mean) {
-            autoPoints.innerHTML = data.epa.breakdown.auto_points.mean;
-            previousAutoPoints = data.epa.breakdown.auto_points.mean;
-            setBackgrounds('identifierAuto', 'autoPoints', 'down');
-        } else if (previousAutoPoints < data.epa.breakdown.auto_points.mean) {
-            autoPoints.innerHTML = data.epa.breakdown.auto_points.mean;
-            previousAutoPoints = data.epa.breakdown.auto_points.mean;
-            setBackgrounds('identifierAuto', 'autoPoints', 'up');
-        } else {
-            autoPoints.innerHTML = data.epa.breakdown.auto_points.mean;
-        }
+    if (previousAutoPoints > data.epa.breakdown.auto_points.mean) {
+        autoPoints.innerHTML = data.epa.breakdown.auto_points.mean;
+        previousAutoPoints = data.epa.breakdown.auto_points.mean;
+        setBackgrounds('identifierAuto', 'autoPoints', 'down');
+    } else if (previousAutoPoints < data.epa.breakdown.auto_points.mean) {
+        autoPoints.innerHTML = data.epa.breakdown.auto_points.mean;
+        previousAutoPoints = data.epa.breakdown.auto_points.mean;
+        setBackgrounds('identifierAuto', 'autoPoints', 'up');
     } else {
         autoPoints.innerHTML = data.epa.breakdown.auto_points.mean;
     }
+
 }
 
 function checkTeleopPoints(data) {
-    if (previoustelePoints != -1) {
-        if (previoustelePoints > data.epa.breakdown.teleop_points.mean) {
-            telePoints.innerHTML = data.epa.breakdown.teleop_points.mean;
-            previoustelePoints = data.epa.breakdown.teleop_points.mean;
-            setBackgrounds('identifierTeleop', 'telePoints', 'down');
-        } else if (previoustelePoints < data.epa.breakdown.teleop_points.mean) {
-            telePoints.innerHTML = data.epa.breakdown.teleop_points.mean;
-            previoustelePoints = data.epa.breakdown.teleop_points.mean;
-            setBackgrounds('identifierTeleop', 'telePoints', 'up');
-        } else {
-            telePoints.innerHTML = data.epa.breakdown.teleop_points.mean;
-        }
+    if (previoustelePoints > data.epa.breakdown.teleop_points.mean) {
+        telePoints.innerHTML = data.epa.breakdown.teleop_points.mean;
+        previoustelePoints = data.epa.breakdown.teleop_points.mean;
+        setBackgrounds('identifierTeleop', 'telePoints', 'down');
+    } else if (previoustelePoints < data.epa.breakdown.teleop_points.mean) {
+        telePoints.innerHTML = data.epa.breakdown.teleop_points.mean;
+        previoustelePoints = data.epa.breakdown.teleop_points.mean;
+        setBackgrounds('identifierTeleop', 'telePoints', 'up');
     } else {
         telePoints.innerHTML = data.epa.breakdown.teleop_points.mean;
     }
 }
 
 function checkEndgamePoints(data) {
-    if (previousEndgamePoints != -1) {
-        if (previousEndgamePoints > data.epa.breakdown.endgame_points.mean) {
-            endgamePoints.innerHTML = data.epa.breakdown.endgame_points.mean;
-            previousEndgamePoints = data.epa.breakdown.endgame_points.mean;
-            setBackgrounds('identifierEndgame', 'endgamePoints', 'down');
-        } else if (previousEndgamePoints < data.epa.breakdown.endgame_points.mean) {
-            endgamePoints.innerHTML = data.epa.breakdown.endgame_points.mean;
-            previousEndgamePoints = data.epa.breakdown.endgame_points.mean;
-            setBackgrounds('identifierEndgame', 'endgamePoints', 'up');
-        } else {
-            endgamePoints.innerHTML = data.epa.breakdown.endgame_points.mean;
-        }
+    if (previousEndgamePoints > data.epa.breakdown.endgame_points.mean) {
+        endgamePoints.innerHTML = data.epa.breakdown.endgame_points.mean;
+        previousEndgamePoints = data.epa.breakdown.endgame_points.mean;
+        setBackgrounds('identifierEndgame', 'endgamePoints', 'down');
+    } else if (previousEndgamePoints < data.epa.breakdown.endgame_points.mean) {
+        endgamePoints.innerHTML = data.epa.breakdown.endgame_points.mean;
+        previousEndgamePoints = data.epa.breakdown.endgame_points.mean;
+        setBackgrounds('identifierEndgame', 'endgamePoints', 'up');
     } else {
         endgamePoints.innerHTML = data.epa.breakdown.endgame_points.mean;
     }
@@ -521,7 +506,7 @@ function notifiationToast(message, delay) {
 
 function checkWindowWidth() {
     let toRemoveClasses = ['position-fixed', 'bottom-0', 'end-0', 'p-3'];
-    let toAddClasses = ['mt-2','position-fixed','top-0', 'start-50', 'translate-middle-x'];
+    let toAddClasses = ['mt-2', 'position-fixed', 'top-0', 'start-50', 'translate-middle-x'];
     if (window.matchMedia("(max-width: 700px)").matches) {
         toRemoveClasses.forEach(removedClass => {
             toasts.classList.remove(removedClass);
