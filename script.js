@@ -350,6 +350,10 @@ function checkURLParams() {
 }
 
 function errorToast(message, delay) {
+    let minutes = 0;
+    if (today.getMinutes() < 10) {
+        minutes = "0" + today.getMinutes();
+    }
     var toast = document.createElement('div');
     toast.classList.add('toast');
     toast.classList.add('fade');
@@ -371,7 +375,7 @@ function errorToast(message, delay) {
 
 
     var toastHeaderSmall = document.createElement('small');
-    toastHeaderSmall.innerText = today.getHours() + ":"+ today.getMinutes() + ":" + today.getSeconds();
+    toastHeaderSmall.innerText = today.getHours() + ":" + minutes + ":" + today.getSeconds();
 
     var toastHeaderCloseButton = document.createElement('button');
     toastHeaderCloseButton.type = "button";
@@ -403,6 +407,10 @@ function errorToast(message, delay) {
 }
 
 function successToast(message, delay) {
+    let minutes = 0;
+    if (today.getMinutes() < 10) {
+        minutes = "0" + today.getMinutes();
+    }
     var toast = document.createElement('div');
     toast.classList.add('toast');
     toast.classList.add('fade');
@@ -425,7 +433,7 @@ function successToast(message, delay) {
 
 
     var toastHeaderSmall = document.createElement('small');
-    toastHeaderSmall.innerText = today.getHours() + ":"+ today.getMinutes() + ":" + today.getSeconds();
+    toastHeaderSmall.innerText = today.getHours() + ":" + minutes + ":" + today.getSeconds();
 
     var toastHeaderCloseButton = document.createElement('button');
     toastHeaderCloseButton.type = "button";
@@ -457,6 +465,10 @@ function successToast(message, delay) {
 }
 
 function notifiationToast(message, delay) {
+    let minutes = 0;
+    if (today.getMinutes() < 10) {
+        minutes = "0" + today.getMinutes();
+    }
     var toast = document.createElement('div');
     toast.classList.add('toast');
     toast.classList.add('fade');
@@ -478,7 +490,7 @@ function notifiationToast(message, delay) {
 
 
     var toastHeaderSmall = document.createElement('small');
-    toastHeaderSmall.innerText = today.getHours() + ":"+ today.getMinutes() + ":" + today.getSeconds();
+    toastHeaderSmall.innerText = today.getHours() + ":" + minutes + ":" + today.getSeconds();
 
     var toastHeaderCloseButton = document.createElement('button');
     toastHeaderCloseButton.type = "button";
