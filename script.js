@@ -49,7 +49,6 @@ let qrButton = document.getElementById('qrCodeExport');
 qrButton.style.color = "white";
 
 
-
 checkURLParams();
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -141,6 +140,7 @@ function getTeamData(teamNumber, yearNumber, eventName) {
 
 
 function setBlueAlliance(data) {
+    console.log(data);
     if (data != null) {
         successToast("Success getting TBA data", 3000)
     }
@@ -200,31 +200,25 @@ function fadeAnimation(element) {
 
 
 function checkRank(data) {
-    if (previousRank != -1) {
-        if (previousRank > data.qual.ranking.rank) {
-            currentRank.innerHTML = data.qual.ranking.rank;
-            previousRank = data.qual.ranking.rank;
-            sameRankIcon.style.display = "none";
-            higherRankIcon.style.display = "none";
-            lowerRankIcon.style.display = "inline-block";
-        } else if (previousRank < data.qual.ranking.rank) {
-            currentRank.innerHTML = data.qual.ranking.rank;
-            previousRank = data.qual.ranking.rank;
-            sameRankIcon.style.display = "none";
-            higherRankIcon.style.display = "inline-block";
-            lowerRankIcon.style.display = "none";
-        } else {
-            currentRank.innerHTML = data.qual.ranking.rank;
-            sameRankIcon.style.display = "inline-block";
-            higherRankIcon.style.display = "none";
-            lowerRankIcon.style.display = "none";
-        }
+    if (previousRank < data.qual.ranking.rank) {
+        currentRank.innerHTML = data.qual.ranking.rank;
+        previousRank = data.qual.ranking.rank;
+        sameRankIcon.style.display = "none";
+        higherRankIcon.style.display = "none";
+        lowerRankIcon.style.display = "inline-block";
+    } else if (previousRank > data.qual.ranking.rank) {
+        currentRank.innerHTML = data.qual.ranking.rank;
+        previousRank = data.qual.ranking.rank;
+        sameRankIcon.style.display = "none";
+        higherRankIcon.style.display = "inline-block";
+        lowezrRankIcon.style.display = "none";
     } else {
         currentRank.innerHTML = data.qual.ranking.rank;
         sameRankIcon.style.display = "inline-block";
         higherRankIcon.style.display = "none";
         lowerRankIcon.style.display = "none";
     }
+
 }
 
 
@@ -342,7 +336,7 @@ function setBackgrounds(identifier, value, ranking) {
 }
 
 function setImage(data) {
-    if(data != null){
+    if (data != null) {
         successToast("Success getting robotImage data", 3000)
     }
     // robotImage.src = data[1].direct_url;
@@ -520,8 +514,8 @@ function notifiationToast(message, delay) {
 }
 
 
-function checkWindowWidth(){
-    
+function checkWindowWidth() {
+
 }
 
 // errorToast("Network Fetch has failed", 5000);
