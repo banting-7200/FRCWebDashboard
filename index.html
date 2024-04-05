@@ -13,6 +13,9 @@
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
 </head>
@@ -30,8 +33,8 @@
                 refresh
             </span>
         </div>
-        <a class="qrCodeContainer rounded-4 shadow pt-2 ps-2 pe-2 border border-2 rounded-4" id="qrCodeExport" target="_blank"><span
-                class="material-icons" >
+        <a class="qrCodeContainer rounded-4 shadow pt-2 ps-2 pe-2 border border-2 rounded-4" id="qrCodeExport"
+            target="_blank"><span class="material-icons">
                 qr_code
             </span>
         </a>
@@ -84,7 +87,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <a href="https://www.chiefdelphi.com/t/frc-web-dashboard-bmhsfrc-bot-nu/461217" class="h3" target="_blank">How to use (Chief Delphi)</a>
+                    <a href="https://www.chiefdelphi.com/t/frc-web-dashboard-bmhsfrc-bot-nu/461217" class="h3"
+                        target="_blank">How to use (Chief Delphi)</a>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -136,8 +140,8 @@
             <hr>
             <div class="statbotics">
                 <div class="epaScoresContainer">
-                    <div class="input-group mb-3 ">
-                        <span class="label input-group-text " id="identifierEPA">EPA</span>
+                    <div class="input-group mb-3">
+                        <span class="label input-group-text " id="identifierEPA"><abbr title="Estimated Points Added">EPA</abbr></span>
                         <input class="form-control" id="epa" type="text" value="N/A" aria-label="Disabled input example"
                             disabled readonly>
                     </div>
@@ -163,20 +167,26 @@
             <img id="robotImageID" class="robotImage" alt="">
         </div>
     </div>
+    <div id="toast-container" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11;"></div>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <script src="script.js"></script>
-    
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q0M5V2K60K"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-Q0M5V2K60K');
-</script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q0M5V2K60K"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-Q0M5V2K60K');
+    </script>
 
 </body>
 

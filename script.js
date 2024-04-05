@@ -36,7 +36,7 @@ let lowerRankIcon = document.getElementById('lowerRank');
 
 // Images
 
-let robotImage = document.getElementById('robotImage');
+let robotImage = document.getElementById('robotImageID');
 
 // URL based Search
 
@@ -79,7 +79,7 @@ document.getElementById('refreshApp').addEventListener('click', function () {
 
 setInterval(() => {
     getTeamData(teamNumber.value, yearOfComp.value, eventName.value);
-}, 600000);
+}, 300000);
 
 function getTeamData(teamNumber, yearNumber, eventName) {
     qrButton.href = "https://api.qrserver.com/v1/create-qr-code/?color=000000&bgcolor=FFFFFF&data=" + encodeURIComponent("https://banting-7200.github.io/FRCWebDashboard?team=" + teamNumber + "&year=" + yearNumber + "&event=" + eventName) + "%0A&qzone=1&margin=0&size=400x400&ecc=L";
@@ -104,7 +104,7 @@ function getTeamData(teamNumber, yearNumber, eventName) {
             setBlueAlliance(data);
         })
         .catch(error => {
-            console.error('Fetching Error:', error);
+            errorToast("[Error getting TBA data] " + error, 3000)
         });
 
     fetch("https://api.statbotics.io/v3/team_event/" + teamNumber + "/" + yearNumber + eventName + "")
@@ -118,7 +118,7 @@ function getTeamData(teamNumber, yearNumber, eventName) {
             setStatbotics(data);
         })
         .catch(error => {
-            console.error('Fetching Error:', error);
+            errorToast("[Error getting Statbotics data] " + error, 3000)
         });
 
     fetch("https://www.thebluealliance.com/api/v3/team/frc" + teamNumber + "/media/" + yearNumber, requestOptions)
@@ -132,7 +132,7 @@ function getTeamData(teamNumber, yearNumber, eventName) {
             setImage(data);
         })
         .catch(error => {
-            console.error('Fetching Error:', error);
+            errorToast("[Error getting RobotIMG data] " + error, 3000)
         });
 
 
@@ -141,11 +141,10 @@ function getTeamData(teamNumber, yearNumber, eventName) {
 
 
 function setBlueAlliance(data) {
-    console.log(data);
-    teamNum.innerHTML = teamNumber.value;
-
+    if (data != null) {
+        successToast("Success getting TBA data", 3000)
+    }
     checkRank(data);
-
     wins.innerHTML = data.qual.ranking.record.wins;
     ties.innerHTML = data.qual.ranking.record.ties;
     losses.innerHTML = data.qual.ranking.record.losses;
@@ -157,6 +156,9 @@ function setBlueAlliance(data) {
 }
 
 function setStatbotics(data) {
+    if (data != null) {
+        successToast("Success getting Statbotics data", 3000)
+    }
     teamNum.innerHTML = data.team;
     checkEPA(data);
     checkAutoPoints(data);
@@ -303,7 +305,6 @@ function checkEndgamePoints(data) {
 function setBackgrounds(identifier, value, ranking) {
     var descriptionID = document.getElementById(identifier);
     var valueID = document.getElementById(value);
-
     let rankingUp = ['bg-success-subtle', 'border-success'];
     let rankingDown = ['bg-danger-subtle', 'border-danger'];
 
@@ -341,9 +342,12 @@ function setBackgrounds(identifier, value, ranking) {
 }
 
 function setImage(data) {
+    if(data != null){
+        successToast("Success getting robotImage data", 3000)
+    }
     // robotImage.src = data[1].direct_url;
     console.log(data[1].direct_url);
-    document.getElementById('robotImageID').src = data[1].direct_url;
+    robotImage.src = data[1].direct_url;
 }
 function checkURLParams() {
     if (searchParams.has('event') && searchParams.has('team') && searchParams.has('year')) {
@@ -353,3 +357,172 @@ function checkURLParams() {
     }
 }
 
+function checkResponse(response) {
+    if (response.ok) {
+
+    }
+}
+
+function errorToast(message, delay) {
+    var toast = document.createElement('div');
+    toast.classList.add('toast');
+    toast.classList.add('fade');
+    toast.setAttribute('role', 'alert');
+    toast.setAttribute('aria-live', 'assertive');
+    toast.setAttribute('aria-atomic', 'true');
+    toast.style.marginBottom = "1rem";
+
+    var toastDelay = delay || 3000;
+
+    var toastHeader = document.createElement('div');
+    toastHeader.classList.add('toast-header');
+    toastHeader.classList.add('bg-danger-subtle');
+
+
+    var toastHeaderStrong = document.createElement('strong');
+    toastHeaderStrong.classList.add('me-auto');
+    toastHeaderStrong.innerText = "Error";
+
+
+    var toastHeaderSmall = document.createElement('small');
+    toastHeaderSmall.innerText = "timer";
+
+    var toastHeaderCloseButton = document.createElement('button');
+    toastHeaderCloseButton.type = "button";
+    toastHeaderCloseButton.classList.add('btn-close');
+    toastHeaderCloseButton.setAttribute('data-bs-dismiss', 'toast');
+    toastHeaderCloseButton.setAttribute('aria-label', 'Close');
+
+
+    toastHeader.appendChild(toastHeaderStrong);
+    toastHeader.appendChild(toastHeaderSmall);
+    toastHeader.appendChild(toastHeaderCloseButton);
+
+    var toastBody = document.createElement('div');
+    toastBody.classList.add('toast-body');
+    toastBody.innerText = message;
+
+    toast.appendChild(toastHeader);
+    toast.appendChild(toastBody);
+
+    document.getElementById('toast-container').appendChild(toast);
+
+    var toast = new bootstrap.Toast(toast);
+
+    toast.show();
+
+    setTimeout(function () {
+        $(toast).remove();
+    }, toastDelay);
+}
+
+function successToast(message, delay) {
+    var toast = document.createElement('div');
+    toast.classList.add('toast');
+    toast.classList.add('fade');
+    toast.setAttribute('role', 'alert');
+    toast.setAttribute('aria-live', 'assertive');
+    toast.setAttribute('aria-atomic', 'true');
+    toast.style.marginBottom = "1rem";
+
+
+    var toastDelay = delay || 3000;
+
+    var toastHeader = document.createElement('div');
+    toastHeader.classList.add('toast-header');
+    toastHeader.classList.add('bg-success-subtle');
+
+
+    var toastHeaderStrong = document.createElement('strong');
+    toastHeaderStrong.classList.add('me-auto');
+    toastHeaderStrong.innerText = "Success!";
+
+
+    var toastHeaderSmall = document.createElement('small');
+    toastHeaderSmall.innerText = "timer";
+
+    var toastHeaderCloseButton = document.createElement('button');
+    toastHeaderCloseButton.type = "button";
+    toastHeaderCloseButton.classList.add('btn-close');
+    toastHeaderCloseButton.setAttribute('data-bs-dismiss', 'toast');
+    toastHeaderCloseButton.setAttribute('aria-label', 'Close');
+
+
+    toastHeader.appendChild(toastHeaderStrong);
+    toastHeader.appendChild(toastHeaderSmall);
+    toastHeader.appendChild(toastHeaderCloseButton);
+
+    var toastBody = document.createElement('div');
+    toastBody.classList.add('toast-body');
+    toastBody.innerText = message;
+
+    toast.appendChild(toastHeader);
+    toast.appendChild(toastBody);
+
+    document.getElementById('toast-container').appendChild(toast);
+
+    var toast = new bootstrap.Toast(toast);
+
+    toast.show();
+
+    setTimeout(function () {
+        $(toast).remove();
+    }, toastDelay);
+}
+
+function notifiationToast(message, delay) {
+    var toast = document.createElement('div');
+    toast.classList.add('toast');
+    toast.classList.add('fade');
+    toast.setAttribute('role', 'alert');
+    toast.setAttribute('aria-live', 'assertive');
+    toast.setAttribute('aria-atomic', 'true');
+    toast.style.marginBottom = "1rem";
+
+
+    var toastDelay = delay || 3000;
+
+    var toastHeader = document.createElement('div');
+    toastHeader.classList.add('toast-header');
+
+
+    var toastHeaderStrong = document.createElement('strong');
+    toastHeaderStrong.classList.add('me-auto');
+    toastHeaderStrong.innerText = "FRC Web Dashboard";
+
+
+    var toastHeaderSmall = document.createElement('small');
+    toastHeaderSmall.innerText = "timer";
+
+    var toastHeaderCloseButton = document.createElement('button');
+    toastHeaderCloseButton.type = "button";
+    toastHeaderCloseButton.classList.add('btn-close');
+    toastHeaderCloseButton.setAttribute('data-bs-dismiss', 'toast');
+    toastHeaderCloseButton.setAttribute('aria-label', 'Close');
+
+
+    toastHeader.appendChild(toastHeaderStrong);
+    toastHeader.appendChild(toastHeaderSmall);
+    toastHeader.appendChild(toastHeaderCloseButton);
+
+    var toastBody = document.createElement('div');
+    toastBody.classList.add('toast-body');
+    toastBody.innerText = message;
+
+    toast.appendChild(toastHeader);
+    toast.appendChild(toastBody);
+
+    document.getElementById('toast-container').appendChild(toast);
+
+    var toast = new bootstrap.Toast(toast);
+
+    toast.show();
+}
+
+
+function checkWindowWidth(){
+    
+}
+
+// errorToast("Network Fetch has failed", 5000);
+// notifiationToast("Queing in 5 minutes!", 5000);
