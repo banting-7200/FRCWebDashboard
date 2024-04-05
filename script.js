@@ -44,12 +44,17 @@ const searchParams = new URLSearchParams(window.location.search);
 
 // qr code shenanigans
 
-
 let qrButton = document.getElementById('qrCodeExport');
 qrButton.style.color = "white";
 
+// Notification Services
+
+let toasts = document.getElementById('toast-container');
+
+// Initialize functions
 
 checkURLParams();
+checkWindowWidth();
 
 document.addEventListener("DOMContentLoaded", function () {
     resizestatsInfo();
@@ -83,7 +88,7 @@ setInterval(() => {
 function getTeamData(teamNumber, yearNumber, eventName) {
     qrButton.href = "https://api.qrserver.com/v1/create-qr-code/?color=000000&bgcolor=FFFFFF&data=" + encodeURIComponent("https://banting-7200.github.io/FRCWebDashboard?team=" + teamNumber + "&year=" + yearNumber + "&event=" + eventName) + "%0A&qzone=1&margin=0&size=400x400&ecc=L";
     const apiKey = 'ZYBxNxrdFx8PfRxwTj5awXIFyWCsR9Rz1xkunI9KiPq7GDn4g5bU25KKGKyeqQTO';
-
+    
     const requestOptions = {
         method: 'GET',
         headers: {
@@ -399,7 +404,7 @@ function errorToast(message, delay) {
     toast.appendChild(toastHeader);
     toast.appendChild(toastBody);
 
-    document.getElementById('toast-container').appendChild(toast);
+    toasts.appendChild(toast);
 
     var toast = new bootstrap.Toast(toast);
 
@@ -453,7 +458,7 @@ function successToast(message, delay) {
     toast.appendChild(toastHeader);
     toast.appendChild(toastBody);
 
-    document.getElementById('toast-container').appendChild(toast);
+    toasts.appendChild(toast);
 
     var toast = new bootstrap.Toast(toast);
 
@@ -506,7 +511,7 @@ function notifiationToast(message, delay) {
     toast.appendChild(toastHeader);
     toast.appendChild(toastBody);
 
-    document.getElementById('toast-container').appendChild(toast);
+    toasts.appendChild(toast);
 
     var toast = new bootstrap.Toast(toast);
 
@@ -515,6 +520,16 @@ function notifiationToast(message, delay) {
 
 
 function checkWindowWidth() {
+    let toRemoveClasses = ['position-fixed', 'bottom-0', 'end-0', 'p-3'];
+    let toAddClasses = ['mt-2','position-fixed','top-0', 'start-50', 'translate-middle-x'];
+    if (window.matchMedia("(max-width: 700px)").matches) {
+        toRemoveClasses.forEach(removedClass => {
+            toasts.classList.remove(removedClass);
+        });
+        toAddClasses.forEach(addedClass => {
+            toasts.classList.add(addedClass);
+        });
+    }
 
 }
 
