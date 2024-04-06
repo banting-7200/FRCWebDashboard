@@ -14,6 +14,19 @@ body {
     display: flexbox;
 }
 
+.rightCornerContainer {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: flexbox;
+}
+
+.teamImage {
+    width: 24px;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
 .settingsContainer {
     margin-right: 10px;
 }
@@ -60,39 +73,90 @@ body {
     margin-right: 10px;
 }
 
-.qrCodeContainer{
+.qrCodeContainer {
     margin-right: 10px;
     text-decoration: none;
 }
-.qrCodeContainer span{
+
+.qrCodeContainer span {
     text-decoration: none;
 }
 
 
+.socialContainer {
+    text-decoration: none;
+    color: white;
+    display: flex;
+}
 
-  .robotImageContainer {
-    width: 400px; 
+
+
+
+
+.robotImageContainer {
+    width: 400px;
     height: 300px;
     display: flex;
     justify-content: center;
-    align-items: center; 
-    overflow: hidden; 
-    border: 1px solid black; 
-    text-align: center; 
+    align-items: center;
+    overflow: hidden;
+    border: 1px solid black;
+    text-align: center;
     position: relative;
-  }
+}
 
-  .robotImageContainer img {
-    width: 100%; 
-    height: auto; 
-    max-width: 100%; 
-    max-height: 100%; 
-    object-fit: cover; 
-    position: absolute; 
+.robotImageContainer img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    position: absolute;
     top: 50%;
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-  }
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+@keyframes animateSocialsOut {
+    0% {
+        width: 44px;
+    }
+
+    100% {
+        width: 107px;
+    }
+}
+
+@keyframes animateSocialsIn {
+    0% {
+        width: 107px;
+    }
+
+    100% {
+        width: 44px;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0%;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 100%;
+    }
+
+    100% {
+        opacity: 0%;
+    }
+}
 
 
 @media screen and (max-width: 900px) {
@@ -103,7 +167,8 @@ body {
     }
 
     .cornerContainer,
-    .mainContainer, .robotImageContainer {
+    .mainContainer,
+    .robotImageContainer {
         width: 100%;
     }
 
@@ -124,7 +189,7 @@ body {
         margin-bottom: .7rem;
     }
 
-    .statsInfo{
+    .statsInfo {
         margin-right: 0px;
         margin-bottom: .7rem;
     }

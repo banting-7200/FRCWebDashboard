@@ -85,6 +85,9 @@ document.getElementById('refreshApp').addEventListener('click', function () {
 
 });
 
+document.getElementById('eventName').addEventListener('focus', function () {
+    getTeamEvents(teamNumber.value, yearOfComp.value);
+});
 
 
 
@@ -146,7 +149,31 @@ function getTeamData(teamNumber, yearNumber, eventName) {
         .catch(error => {
             errorToast("[Error getting RobotIMG data] " + error, 3000)
         });
+}
 
+async function getTeamEvents(teamNumber, yearNumber) {
+    const apiKey = 'ZYBxNxrdFx8PfRxwTj5awXIFyWCsR9Rz1xkunI9KiPq7GDn4g5bU25KKGKyeqQTO';
+    const requestOptions = {
+        method: 'GET',
+        headers: {
+            'accept': 'application/json',
+            'X-TBA-Auth-Key': `${apiKey}`,
+        },
+    };
+
+    await fetch('https://www.thebluealliance.com/api/v3/team/frc' + teamNumber + '/events/' + yearNumber, requestOptions)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response reported as not ok!!!');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => {
+            errorToast("[Error getting TBA Events data] " + error, 3000)
+        });
 
 
 }
@@ -191,10 +218,14 @@ document.getElementById('modeSwitcher').addEventListener('click', () => {
     if (document.documentElement.getAttribute('data-bs-theme') == 'dark') {
         document.documentElement.setAttribute('data-bs-theme', 'light')
         document.getElementById('qrCodeExport').style.color = "black";
+        document.getElementById('teamImage').src = 'assets/bantingLogo/ICONMARK - REVERSED.png';
     }
     else {
         document.documentElement.setAttribute('data-bs-theme', 'dark')
         document.getElementById('qrCodeExport').style.color = "white";
+        document.getElementById('teamImage').src = 'assets/bantingLogo/ICONMARK - WHITE.png';
+
+
     }
 })
 
