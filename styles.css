@@ -117,6 +117,64 @@ body {
     transform: translate(-50%, -50%);
 }
 
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font: 16px Arial;
+}
+
+.autocomplete {
+    /*the container must be positioned relative:*/
+    position: relative;
+    display: inline-block;
+}
+
+input {
+    background-color: #f1f1f1;
+    padding: 10px;
+    font-size: 16px;
+}
+
+input[type=text] {
+    width: 75%;
+}
+
+input[type=submit] {
+    background-color: DodgerBlue;
+    color: #fff;
+}
+
+.autocomplete-items {
+    width: 74.1%;
+    position: absolute;
+    border: 1px solid #495057;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
+    top: 100%;
+    left: 26.2%;
+    right: 0;
+}
+
+.autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #212529;
+    border-bottom: 1px solid #495057;
+}
+
+.autocomplete-items div:hover {
+    /*when hovering an item:*/
+    background-color:dodgerblue;
+}
+
+.autocomplete-active {
+    /*when navigating through the items using the arrow keys:*/
+    background-color: DodgerBlue !important;
+}
 
 @keyframes animateSocialsOut {
     0% {
