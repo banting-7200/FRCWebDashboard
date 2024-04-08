@@ -59,6 +59,10 @@ let timeHours = parseInt(today.getHours());
 let timeMinutes = today.getMinutes();
 let timeSeconds = today.getSeconds();
 
+// Autocomplete Object
+
+let dataList = document.getElementById('eventOptions');
+
 // Initialize functions
 
 checkURLParams();
@@ -76,12 +80,12 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.getElementById('reloadApp').addEventListener('click', function () {
-    getTeamData(teamNumber.value, yearOfComp.value, eventName.value)
+    getTeamData(teamNumber.value, yearOfComp.value, eventName.value.split(" ")[0])
 
 });
 
 document.getElementById('refreshApp').addEventListener('click', function () {
-    getTeamData(teamNumber.value, yearOfComp.value, eventName.value)
+    getTeamData(teamNumber.value, yearOfComp.value, eventName.value.split(" ")[0])
 
 });
 
@@ -151,7 +155,7 @@ function getTeamData(teamNumber, yearNumber, eventName) {
         });
 }
 
-async function getTeamEvents(teamNumber, yearNumber) {
+function getTeamEvents(teamNumber, yearNumber) {
     const apiKey = 'ZYBxNxrdFx8PfRxwTj5awXIFyWCsR9Rz1xkunI9KiPq7GDn4g5bU25KKGKyeqQTO';
     const requestOptions = {
         method: 'GET',
@@ -161,7 +165,7 @@ async function getTeamEvents(teamNumber, yearNumber) {
         },
     };
 
-    await fetch('https://www.thebluealliance.com/api/v3/team/frc' + teamNumber + '/events/' + yearNumber, requestOptions)
+    fetch('https://www.thebluealliance.com/api/v3/team/frc' + teamNumber + '/events/' + yearNumber, requestOptions)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response reported as not ok!!!');
@@ -169,7 +173,7 @@ async function getTeamEvents(teamNumber, yearNumber) {
             return response.json();
         })
         .then(data => {
-            console.log(data);
+            createDatalinks(data);
         })
         .catch(error => {
             errorToast("[Error getting TBA Events data] " + error, 3000)
@@ -177,6 +181,7 @@ async function getTeamEvents(teamNumber, yearNumber) {
 
 
 }
+
 
 
 function setBlueAlliance(data) {
@@ -561,4 +566,18 @@ function checkWindowWidth() {
         });
     }
 
+}
+
+
+function createDatalinks(data) {
+    while (dataList.firstChild) { 
+        dataList.firstChild.remove(); 
+    }
+    var option;
+    for (let i = 0; i <= data.length; i++) {
+        option = document.createElement('option');
+        option.value = data[i].event_code + " (" + data[i].city + ")";
+        dataList.appendChild(option);
+        console.log(option.value.split(" ")[0]);
+    }
 }
