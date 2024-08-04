@@ -80,23 +80,6 @@ body {
     margin-right: 10px;
 }
 
-.qrCodeContainer {
-    margin-right: 10px;
-    text-decoration: none;
-}
-
-.qrCodeContainer span {
-    text-decoration: none;
-}
-
-.comapreContainer {
-    margin-right: 10px;
-    text-decoration: none;
-}
-
-.comapreContainer span {
-    text-decoration: none;
-}
 
 .socialContainer {
     text-decoration: none;
@@ -127,6 +110,10 @@ body {
     transform: translate(-50%, -50%);
 }
 
+
+.material-icons{
+    text-decoration: none;
+}
 
 
 .autocomplete {
@@ -254,7 +241,7 @@ input[type=submit] {
         order: -1;
     }
     
-
+q
     .mainContainer {
         flex-direction: column;
         margin-top: 4rem;

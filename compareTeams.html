@@ -19,49 +19,27 @@
 </head>
 
 <body>
-    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
-        tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Modal 1</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Show a second modal and hide this one with the button below.
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open
-                        second modal</button>
-                </div>
-            </div>
-        </div>
+    <div class="functionsContainer d-flex m-2">
+        <button class="themeSwitcherContainer rounded-4 shadow pt-2 ps-2 pe-2 border border-2 rounded-4 me-2"
+            id="themeSwitcher"><span class="material-icons" id="themeSwitcherIcon">
+                light_mode
+            </span>
+        </button>
+        <a class="qrCodeContainer rounded-4 shadow pt-2 ps-2 pe-2 border border-2 rounded-4 me-2" id="qrCodeExport"
+            target="_blank"><span class="material-icons">
+                qr_code
+            </span>
+        </a>
     </div>
-    <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
-        tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Modal 2</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Hide this modal and show the first with the button below.
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back to
-                        first</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="mainContainer d-flex justify-content-center align-items-center">
         <div class="teamContainer rounded-4 shadow rounded-4 border border-4 d-inline m-3">
-            <button class="teamSettingsContainer rounded-4 shadow border border-2 rounded-4 m-1"
-                data-bs-target="#exampleModalToggle" data-bs-toggle="modal"> <span
-                    class="material-icons m-2">settings</span>
-            </button>
+            <div class="teamMiscContainer d-flex">
+                <button data-bs-toggle="modal" data-bs-target="#teamAModal"
+                    class="teamSettingsContainer rounded-4 shadow pt-2 ps-2 pe-2 border border-2 rounded-4 m-2 me-1"><span
+                        class="material-icons">settings</span></button>
+                <div class="teamLabel rounded-4 shadow pt-2 ps-2 pe-2 border border-2 rounded-4 m-2">Team
+                    <strong>A</strong></div>
+            </div>
             <div class="robotImageContainer" id="teamAImage">
                 <img src="E8KoxEGh.jpg" alt="">
             </div>
@@ -76,28 +54,171 @@
                     <div class="display-1 text-center"><strong id="teamARank">N/A</strong></div>
                 </div>
             </div>
-            <hr class="mb-4 me-3 ms-3">
+            <hr class="mb-1 me-3 ms-3">
+            <div class="blueAlliance m-3 mt-1">
+                <div class="rankingContainer">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="label">Wins</th>
+                                <th scope="col" class="label">Ties</th>
+                                <th scope="col" class="label">Losses</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="wins">N/A</td>
+                                <td id="ties">N/A</td>
+                                <td id="losses">N/A</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="statbotics m-3">
+                <div class="epaScoresContainer m-2">
+                    <div class="mb-3">
+                        <div class="label teamLabelContainer h3 text-center" title="Estimated Points Added">EPA</div>
+                        <div class="display-2 text-center"><strong id="teamANum">N/A</strong></div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="teamContainer rounded-4 shadow rounded-4 border border-4 d-inline m-3">
-            <button class="teamSettingsContainer rounded-4 shadow border border-2 rounded-4 m-1"
-                data-bs-target="#exampleModalToggle" data-bs-toggle="modal"> <span
-                    class="material-icons m-2">settings</span>
-            </button>
-            <div class="robotImageContainer" id="teamBImage">
+            <div class="teamMiscContainer d-flex">
+                <button data-bs-toggle="modal" data-bs-target="#teamBModal"
+                    class="teamSettingsContainer rounded-4 shadow pt-2 ps-2 pe-2 border border-2 rounded-4 m-2 me-1"><span
+                        class="material-icons">settings</span></button>
+                <div class="teamLabel rounded-4 shadow pt-2 ps-2 pe-2 border border-2 rounded-4 m-2">Team
+                    <Strong>B</Strong></div>
+            </div>
+            <div class="robotImageContainer" id="teamAImage">
                 <img src="E8KoxEGh.jpg" alt="">
             </div>
             <div class="generalTeamInfo d-flex m-3">
                 <div class="teamContainer">
                     <div class="label teamLabelContainer h3 text-center">Team</div>
-                    <div class="display-1 text-center"><strong id="teamBNum">N/A</strong></div>
+                    <div class="display-1 text-center"><strong id="teamANum">N/A</strong></div>
                 </div>
                 <span class="vr m-1 me-3 ms-3"></span>
                 <div class="rankContainer">
                     <div class="label rankLabelContainer h3 text-center">Rank</div>
-                    <div class="display-1 text-center"><strong id="teamBRank">N/A</strong></div>
+                    <div class="display-1 text-center"><strong id="teamARank">N/A</strong></div>
                 </div>
             </div>
-            <hr class="mb-4 me-3 ms-3">
+            <hr class="mb-1 me-3 ms-3">
+            <div class="blueAlliance m-3 mt-1">
+                <div class="rankingContainer">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="label">Wins</th>
+                                <th scope="col" class="label">Ties</th>
+                                <th scope="col" class="label">Losses</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="wins">N/A</td>
+                                <td id="ties">N/A</td>
+                                <td id="losses">N/A</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="statbotics m-3">
+                <div class="epaScoresContainer m-2">
+                    <div class="mb-3">
+                        <div class="label teamLabelContainer h3 text-center" title="Estimated Points Added">EPA</div>
+                        <div class="display-2 text-center"><strong id="teamANum">N/A</strong></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+
+    <!-- MODALS -->
+    <div class="modal fade" id="teamAModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="settingsModalLabel">Team A Settings</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="input-group mb-3 ">
+                            <span class="label input-group-text " id="">Team Number</span>
+                            <input class="form-control " type="text" id="teamANumber" placeholder="example: ####">
+                        </div>
+                        <div class="input-group mb-3 ">
+                            <span class="label input-group-text " id="">Year of Comp</span>
+                            <input class="form-control " type="text" id="teamAYear" placeholder="example: 2024">
+                        </div>
+                        <div class="input-group mb-3 ">
+                            <span class="label input-group-text " id="">Event Name</span>
+                            <input class="form-control" list="teamAEventOptions" type="text" id="eventName"
+                                placeholder="example: onham">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="reloadApp">Reload Team Data</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="teamBModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="settingsModalLabel">Team B Settings</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="input-group mb-3 ">
+                            <span class="label input-group-text " id="">Team Number</span>
+                            <input class="form-control " type="text" id="teamANumber" placeholder="example: ####">
+                        </div>
+                        <div class="input-group mb-3 ">
+                            <span class="label input-group-text " id="">Year of Comp</span>
+                            <input class="form-control " type="text" id="teamAYear" placeholder="example: 2024">
+                        </div>
+                        <div class="input-group mb-3 ">
+                            <span class="label input-group-text " id="">Event Name</span>
+                            <input class="form-control" list="teamAEventOptions" type="text" id="eventName"
+                                placeholder="example: onham">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="reloadApp">Reload Team Data</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="compareTeams.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q0M5V2K60K"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-Q0M5V2K60K');
+    </script>
 </body>

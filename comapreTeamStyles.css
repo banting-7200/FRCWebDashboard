@@ -89,12 +89,12 @@ body {
     text-decoration: none;
 }
 
-.comapreContainer {
+.qrCodeContainer {
     margin-right: 10px;
     text-decoration: none;
 }
 
-.comapreContainer span {
+.qrCodeContainer span {
     text-decoration: none;
 }
 
@@ -190,11 +190,23 @@ input[type=submit] {
     backdrop-filter: blur(10px);
 }
 
-.teamSettingsContainer{
+.teamMiscContainer{
     position: absolute;
-    padding: 0;
     z-index: 1;
+}
+
+.teamSettingsContainer{
+    padding: 0;
     backdrop-filter: blur(50px);
+}
+
+.teamSettingsContainer span{
+    color: white;
+}
+
+.teamLabel{
+    backdrop-filter: blur(50px);
+    color: white;
 }
 
 @keyframes animateSocialsOut {

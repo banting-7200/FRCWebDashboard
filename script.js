@@ -64,6 +64,7 @@ let timeSeconds = today.getSeconds();
 
 checkURLParams();
 checkWindowWidth();
+setIcons();
 
 document.addEventListener("DOMContentLoaded", function () {
     resizestatsInfo();
@@ -216,15 +217,30 @@ function setStatbotics(data) {
     fadeAnimation(endgamePoints);
 }
 
+function setIcons() {
+    if (document.documentElement.getAttribute('data-bs-theme') == 'dark') {
+        document.documentElement.setAttribute('data-bs-theme', 'dark')
+        document.getElementById('qrCodeExport').style.color = "white";
+        document.getElementById('compareContainer').style.color = "white";
+        document.getElementById('teamContainer').style.color = "white";
+        document.getElementById('teamImage').src = 'assets/bantingLogo/ICONMARK - WHITE.png';
+    }
+
+}
+
 document.getElementById('modeSwitcher').addEventListener('click', () => {
     if (document.documentElement.getAttribute('data-bs-theme') == 'dark') {
         document.documentElement.setAttribute('data-bs-theme', 'light')
         document.getElementById('qrCodeExport').style.color = "black";
+        document.getElementById('compareContainer').style.color = "black";
+        document.getElementById('teamContainer').style.color = "black";
         document.getElementById('teamImage').src = 'assets/bantingLogo/ICONMARK - REVERSED.png';
     }
     else {
         document.documentElement.setAttribute('data-bs-theme', 'dark')
         document.getElementById('qrCodeExport').style.color = "white";
+        document.getElementById('compareContainer').style.color = "white";
+        document.getElementById('teamContainer').style.color = "white";
         document.getElementById('teamImage').src = 'assets/bantingLogo/ICONMARK - WHITE.png';
 
 
