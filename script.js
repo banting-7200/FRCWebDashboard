@@ -390,6 +390,7 @@ function setImage(data) {
     console.log(data[1].direct_url);
     robotImage.src = data[1].direct_url;
 }
+
 function checkURLParams() {
     if (searchParams.has('event') && searchParams.has('team') && searchParams.has('year')) {
         // teamNum.innerHTML = searchParams.get('team');

@@ -37,10 +37,13 @@
             </span>
         </a>
         <a class="teamContainer rounded-4 shadow pt-2 ps-2 pe-2 border border-2 rounded-4" id="matchContainer"
-            href="compareTeams.html" ><span class="material-icons">
+            href="compareTeams.html"><span class="material-icons">
                 groups_3
             </span>
         </a>
+        <div class="teamContainer rounded-4 shadow pt-2 ps-2 pe-2 border border-2 rounded-4 ms-2" id="matchContainer"> IN
+            TESTING
+        </div>
     </div>
     <div class="mainContainer d-flex justify-content-center align-items-center">
         <div class="teamContainer rounded-4 shadow rounded-4 border border-4 d-inline m-3">
@@ -49,7 +52,8 @@
                     class="teamSettingsContainer rounded-4 shadow pt-2 ps-2 pe-2 border border-2 rounded-4 m-2 me-1"><span
                         class="material-icons">settings</span></button>
                 <div class="teamLabel rounded-4 shadow pt-2 ps-2 pe-2 border border-2 rounded-4 m-2">Team
-                    <strong>A</strong></div>
+                    <strong>A</strong>
+                </div>
             </div>
             <div class="robotImageContainer" id="teamAImage">
                 <img src="E8KoxEGh.jpg" alt="">
@@ -78,9 +82,9 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td id="wins">N/A</td>
-                                <td id="ties">N/A</td>
-                                <td id="losses">N/A</td>
+                                <td id="teamAWins">N/A</td>
+                                <td id="teamATies">N/A</td>
+                                <td id="teamALosses">N/A</td>
                             </tr>
                         </tbody>
                     </table>
@@ -90,7 +94,7 @@
                 <div class="epaScoresContainer m-2">
                     <div class="mb-3">
                         <div class="label teamLabelContainer h3 text-center" title="Estimated Points Added">EPA</div>
-                        <div class="display-2 text-center"><strong id="teamANum">N/A</strong></div>
+                        <div class="display-2 text-center"><strong id="teamAEPA">N/A</strong></div>
                     </div>
                 </div>
             </div>
@@ -101,20 +105,21 @@
                     class="teamSettingsContainer rounded-4 shadow pt-2 ps-2 pe-2 border border-2 rounded-4 m-2 me-1"><span
                         class="material-icons">settings</span></button>
                 <div class="teamLabel rounded-4 shadow pt-2 ps-2 pe-2 border border-2 rounded-4 m-2">Team
-                    <Strong>B</Strong></div>
+                    <Strong>B</Strong>
+                </div>
             </div>
-            <div class="robotImageContainer" id="teamAImage">
+            <div class="robotImageContainer" id="teamBImage">
                 <img src="E8KoxEGh.jpg" alt="">
             </div>
             <div class="generalTeamInfo d-flex m-3">
                 <div class="teamContainer">
                     <div class="label teamLabelContainer h3 text-center">Team</div>
-                    <div class="display-1 text-center"><strong id="teamANum">N/A</strong></div>
+                    <div class="display-1 text-center"><strong id="teamBNum">N/A</strong></div>
                 </div>
                 <span class="vr m-1 me-3 ms-3"></span>
                 <div class="rankContainer">
                     <div class="label rankLabelContainer h3 text-center">Rank</div>
-                    <div class="display-1 text-center"><strong id="teamARank">N/A</strong></div>
+                    <div class="display-1 text-center"><strong id="teamBRank">N/A</strong></div>
                 </div>
             </div>
             <hr class="mb-1 me-3 ms-3">
@@ -130,9 +135,9 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td id="wins">N/A</td>
-                                <td id="ties">N/A</td>
-                                <td id="losses">N/A</td>
+                                <td id="teamBWins">N/A</td>
+                                <td id="teamBTies">N/A</td>
+                                <td id="teamBLosses">N/A</td>
                             </tr>
                         </tbody>
                     </table>
@@ -142,7 +147,7 @@
                 <div class="epaScoresContainer m-2">
                     <div class="mb-3">
                         <div class="label teamLabelContainer h3 text-center" title="Estimated Points Added">EPA</div>
-                        <div class="display-2 text-center"><strong id="teamANum">N/A</strong></div>
+                        <div class="display-2 text-center"><strong id="teamBEPA">N/A</strong></div>
                     </div>
                 </div>
             </div>
@@ -214,6 +219,7 @@
             </div>
         </div>
     </div>
+    <div id="toast-container" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11;"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
