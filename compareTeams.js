@@ -22,7 +22,6 @@ let teamBPlaceholderObjects = [document.getElementById('teamBImage'), document.g
 
 // Functions to be initialized
 initIcons();
-notifiationToast("This feature is currently in alpha and being tested, this is NOT final!!!", 10000);
 
 // Event Listeners
 
@@ -34,14 +33,14 @@ teamAFormObjects[3].addEventListener('click', function () {
 teamBFormObjects[3].addEventListener('click', function () {
     getTeamData(teamBFormObjects[0].value, teamBFormObjects[1].value, teamBFormObjects[2].value, teamBPlaceholderObjects)
 });
-/* 
+
 teamAFormObjects[2].addEventListener('focus', function () {
-    getTeamEvents(teamAFormObjects[0].value, teamAFormObjects[1].value);
+    getTeamEvents(teamAFormObjects[0].value, teamAFormObjects[1].value, "teamA");
 });
 
 teamBFormObjects[2].addEventListener('focus', function () {
-    getTeamEvents(teamAFormObjects[0].value, teamAFormObjects[1].value);
-}); */
+    getTeamEvents(teamBFormObjects[0].value, teamBFormObjects[1].value, "teamB");
+});
 
 
 // Essential Functions
@@ -136,6 +135,113 @@ function setImage(data, team) {
     // robotImage.src = data[1].direct_url;
     console.log(data[1].direct_url);
     team[0].src = data[1].direct_url;
+}
+
+function getTeamEvents(teamNumber, yearNumber, team) {
+    const apiKey = 'ZYBxNxrdFx8PfRxwTj5awXIFyWCsR9Rz1xkunI9KiPq7GDn4g5bU25KKGKyeqQTO';
+    const requestOptions = {
+        method: 'GET',
+        headers: {
+            'accept': 'application/json',
+            'X-TBA-Auth-Key': `${apiKey}`,
+        },
+    };
+
+    fetch('https://www.thebluealliance.com/api/v3/team/frc' + teamNumber + '/events/' + yearNumber, requestOptions)
+        .then(async response => {
+            if (!response.ok) {
+                throw new Error('Network response reported as not ok!!!');
+            }
+            return await response.json();
+        })
+        .then(data => {
+            createDatalinks(data, team);
+        })
+        .catch(error => {
+            errorToast("[Error getting TBA Events data] " + error, 3000)
+        });
+
+}
+
+
+let optionList = ["data", "pooper scooper"];
+
+function createDatalinks(data, team) {
+    console.log(data);
+    for (let i = 0; i < data.length; i++) { // Change condition to i < data.length
+        optionList[i] = data[i].event_code + " (" + data[i].city + ")";
+    }
+
+    if (team == "teamA") {
+        autocomplete(teamAFormObjects[2], optionList);
+    } else {
+        autocomplete(teamBFormObjects[2], optionList);
+    }
+}
+
+function autocomplete(inp, arr) {
+    var currentFocus;
+    inp.addEventListener("input", function (e) {
+        var a, b, i, val = this.value;
+        closeAllLists();
+        if (!val) { return false; }
+        currentFocus = -1;
+        a = document.createElement("DIV");
+        a.setAttribute("id", this.id + "autocomplete-list");
+        a.setAttribute("class", "autocomplete-items");
+        this.parentNode.appendChild(a);
+        for (i = 0; i < arr.length; i++) {
+            if (arr[i].toUpperCase().includes(val.toUpperCase())) { // Changed condition here
+                b = document.createElement("DIV");
+                b.innerHTML = arr[i].replace(new RegExp(val, 'ig'), "<strong>$&</strong>");
+                b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                b.addEventListener("click", function (e) {
+                    inp.value = this.getElementsByTagName("input")[0].value;
+                    closeAllLists();
+                });
+                a.appendChild(b);
+            }
+        }
+    });
+    inp.addEventListener("keydown", function (e) {
+        var x = document.getElementById(this.id + "autocomplete-list");
+        if (x) x = x.getElementsByTagName("div");
+        if (e.keyCode == 40) {
+            currentFocus++;
+            addActive(x);
+        } else if (e.keyCode == 38) {
+            currentFocus--;
+            addActive(x);
+        } else if (e.keyCode == 13) {
+            e.preventDefault();
+            if (currentFocus > -1) {
+                if (x) x[currentFocus].click();
+            }
+        }
+    });
+    function addActive(x) {
+        if (!x) return false;
+        removeActive(x);
+        if (currentFocus >= x.length) currentFocus = 0;
+        if (currentFocus < 0) currentFocus = (x.length - 1);
+        x[currentFocus].classList.add("autocomplete-active");
+    }
+    function removeActive(x) {
+        for (var i = 0; i < x.length; i++) {
+            x[i].classList.remove("autocomplete-active");
+        }
+    }
+    function closeAllLists(elmnt) {
+        var x = document.getElementsByClassName("autocomplete-items");
+        for (var i = 0; i < x.length; i++) {
+            if (elmnt != x[i] && elmnt != inp) {
+                x[i].parentNode.removeChild(x[i]);
+            }
+        }
+    }
+    document.addEventListener("click", function (e) {
+        closeAllLists(e.target);
+    });
 }
 
 // Misc Functions
