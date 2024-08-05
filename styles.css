@@ -14,13 +14,6 @@ body {
     display: flexbox;
 }
 
-.featuresContainer{
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    display: flexbox;
-}
-
 .socialsContainer {
     position: absolute;
     top: 0px;
@@ -80,11 +73,25 @@ body {
     margin-right: 10px;
 }
 
+.qrCodeContainer {
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+.qrCodeContainer span {
+    text-decoration: none;
+}
+
 
 .socialContainer {
     text-decoration: none;
+    color: white;
     display: flex;
 }
+
+
+
+
 
 .robotImageContainer {
     width: 400px;
@@ -110,10 +117,6 @@ body {
     transform: translate(-50%, -50%);
 }
 
-
-.material-icons{
-    text-decoration: none;
-}
 
 
 .autocomplete {
@@ -174,6 +177,7 @@ input[type=submit] {
 }
 
 
+
 @keyframes animateSocialsOut {
     0% {
         width: 44px;
@@ -222,26 +226,16 @@ input[type=submit] {
         align-items: flex-start;
     }
 
-    .functionsContainer,
+    .cornerContainer,
     .mainContainer,
     .robotImageContainer {
         width: 100%;
     }
 
-    .functionsContainer {
+    .cornerContainer {
         order: -1;
     }
 
-    .featuresContainer{
-        position: relative;
-        display: flexbox;
-    }
-
-    .featuresContainer{
-        order: -1;
-    }
-    
-q
     .mainContainer {
         flex-direction: column;
         margin-top: 4rem;
@@ -264,14 +258,4 @@ q
     .statsInfo {
         width: 100%;
     }
-
-}
-
-button {
-    background-color: inherit;
-    color: inherit;
-}
-
-#qrCodeExport {
-    cursor: pointer;
 }
