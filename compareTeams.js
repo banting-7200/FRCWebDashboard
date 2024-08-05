@@ -26,12 +26,12 @@ initIcons();
 // Event Listeners
 
 teamAFormObjects[3].addEventListener('click', function () {
-    getTeamData(teamAFormObjects[0].value, teamAFormObjects[1].value, teamAFormObjects[2].value, teamAPlaceholderObjects)
+    getTeamData(teamAFormObjects[0].value, teamAFormObjects[1].value, teamAFormObjects[2].value.split(" ")[0], teamAPlaceholderObjects)
 
 });
 
 teamBFormObjects[3].addEventListener('click', function () {
-    getTeamData(teamBFormObjects[0].value, teamBFormObjects[1].value, teamBFormObjects[2].value, teamBPlaceholderObjects)
+    getTeamData(teamBFormObjects[0].value, teamBFormObjects[1].value, teamBFormObjects[2].value.split(" ")[0], teamBPlaceholderObjects)
 });
 
 teamAFormObjects[2].addEventListener('focus', function () {
