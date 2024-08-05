@@ -288,7 +288,9 @@ function fadeAnimation(element) {
 function errorToast(message, delay) {
     let minutes = 0;
     if (today.getMinutes() < 10) {
-        minutes = "0" + today.getMinutes();
+        minutes = "0" + today.getMinutes().toString(2);
+    }else{
+        minutes = today.getMinutes().toString();
     }
     var toast = document.createElement('div');
     toast.classList.add('toast');
@@ -345,7 +347,9 @@ function errorToast(message, delay) {
 function successToast(message, delay) {
     let minutes = 0;
     if (today.getMinutes() < 10) {
-        minutes = "0" + today.getMinutes();
+        minutes = "0" + today.getMinutes().toString(2);
+    }else{
+        minutes = today.getMinutes().toString();
     }
     var toast = document.createElement('div');
     toast.classList.add('toast');
@@ -403,7 +407,9 @@ function successToast(message, delay) {
 function notifiationToast(message, delay) {
     let minutes = 0;
     if (today.getMinutes() < 10) {
-        minutes = "0" + today.getMinutes();
+        minutes = "0" + today.getMinutes().toString(2);
+    }else{
+        minutes = today.getMinutes().toString();
     }
     var toast = document.createElement('div');
     toast.classList.add('toast');
