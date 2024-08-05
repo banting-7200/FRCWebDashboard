@@ -386,7 +386,6 @@ function setImage(data) {
     if (data != null) {
         successToast("Success getting robotImage data", 3000)
     }
-    // robotImage.src = data[1].direct_url;
     console.log(data[1].direct_url);
     robotImage.src = data[1].direct_url;
 }

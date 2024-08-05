@@ -114,6 +114,7 @@ function setImage(data, team) {
     }
     // robotImage.src = data[1].direct_url;
     console.log(data[1].direct_url);
+    teamAIds[0].src = data[1].direct_url;
     team[0].src = data[1].direct_url;
 }
 
