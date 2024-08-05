@@ -41,9 +41,17 @@
                 groups_3
             </span>
         </a>
-        <div class="teamContainer rounded-4 shadow pt-2 ps-2 pe-2 border border-2 rounded-4 ms-2" id="matchContainer"> IN
+        <div class="teamContainer rounded-4 shadow pt-2 ps-2 pe-2 border border-2 rounded-4 ms-2" id="matchContainer">
+            IN
             TESTING
         </div>
+    </div>
+    <div class="socialsContainer d-flex m-2">
+        <a class="socialContainer rounded-4 shadow pt-2 ps-2 pe-2 border border-2 rounded-4" id="socials"
+            href="https://banting7200.com">
+            <img class="teamImage" id="teamImage" src="assets/bantingLogo/ICONMARK - WHITE.png" alt="" srcset="">
+            <div class="ms-1">| 7200</div>
+        </a>
     </div>
     <div class="mainContainer d-flex justify-content-center align-items-center">
         <div class="teamContainer rounded-4 shadow rounded-4 border border-4 d-inline m-3">
@@ -55,7 +63,7 @@
                     <strong>A</strong>
                 </div>
             </div>
-            <div class="robotImageContainer" >
+            <div class="robotImageContainer">
                 <img id="teamAImage" src="" alt="">
             </div>
             <div class="generalTeamInfo d-flex m-3">
@@ -156,6 +164,8 @@
 
 
     <!-- MODALS -->
+
+    <!-- TEAM A MODAL -->
     <div class="modal fade" id="teamAModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -175,19 +185,20 @@
                         </div>
                         <div class="input-group mb-3 ">
                             <span class="label input-group-text " id="">Event Name</span>
-                            <input class="form-control" list="teamAEventOptions" type="text" id="eventName"
+                            <input class="form-control" list="teamAEventOptions" type="text" id="teamAEventName"
                                 placeholder="example: onham">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="reloadApp">Reload Team Data</button>
+                    <button type="button" class="btn btn-primary" id="reloadTeamA">Reload Team Data</button>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- TEAM B MODAL -->
     <div class="modal fade" id="teamBModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -199,22 +210,22 @@
                     <form>
                         <div class="input-group mb-3 ">
                             <span class="label input-group-text " id="">Team Number</span>
-                            <input class="form-control " type="text" id="teamANumber" placeholder="example: ####">
+                            <input class="form-control " type="text" id="teamBNumber" placeholder="example: ####">
                         </div>
                         <div class="input-group mb-3 ">
                             <span class="label input-group-text " id="">Year of Comp</span>
-                            <input class="form-control " type="text" id="teamAYear" placeholder="example: 2024">
+                            <input class="form-control " type="text" id="teamBYear" placeholder="example: 2024">
                         </div>
                         <div class="input-group mb-3 ">
                             <span class="label input-group-text " id="">Event Name</span>
-                            <input class="form-control" list="teamAEventOptions" type="text" id="eventName"
+                            <input class="form-control" list="teamBEventOptions" type="text" id="teamBEventName"
                                 placeholder="example: onham">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="reloadApp">Reload Team Data</button>
+                    <button type="button" class="btn btn-primary" id="reloadTeamB">Reload Team Data</button>
                 </div>
             </div>
         </div>

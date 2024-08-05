@@ -12,15 +12,36 @@ let timeSeconds = today.getSeconds();
 
 // Team Form objects
 
+let teamAFormObjects = [document.getElementById('teamANumber'), document.getElementById('teamAYear'), document.getElementById('teamAEventName'), document.getElementById('reloadTeamA')];
+let teamBFormObjects = [document.getElementById('teamBNumber'), document.getElementById('teamBYear'), document.getElementById('teamBEventName'), document.getElementById('reloadTeamB')];
+
 
 // Team Placeholders
-let teamAIds = [document.getElementById('teamAImage'), document.getElementById('teamANum'), document.getElementById('teamARank'), document.getElementById('teamAWins'), document.getElementById('teamATies'), document.getElementById('teamALosses'), document.getElementById('teamAEPA')];
-let teamBIds = [document.getElementById('teamBImage'), document.getElementById('teamBNum'), document.getElementById('teamBRank'), document.getElementById('teamBWins'), document.getElementById('teamBTies'), document.getElementById('teamBLosses'), document.getElementById('teamBEPA')];
+let teamAPlaceholderObjects = [document.getElementById('teamAImage'), document.getElementById('teamANum'), document.getElementById('teamARank'), document.getElementById('teamAWins'), document.getElementById('teamATies'), document.getElementById('teamALosses'), document.getElementById('teamAEPA')];
+let teamBPlaceholderObjects = [document.getElementById('teamBImage'), document.getElementById('teamBNum'), document.getElementById('teamBRank'), document.getElementById('teamBWins'), document.getElementById('teamBTies'), document.getElementById('teamBLosses'), document.getElementById('teamBEPA')];
 
 // Functions to be initialized
 initIcons();
 notifiationToast("This feature is currently in alpha and being tested, this is NOT final!!!", 10000);
-getTeamData("2056", "2024", "onham", teamAIds);
+
+// Event Listeners
+
+teamAFormObjects[3].addEventListener('click', function () {
+    getTeamData(teamAFormObjects[0].value, teamAFormObjects[1].value, teamAFormObjects[2].value, teamAPlaceholderObjects)
+
+});
+
+teamBFormObjects[3].addEventListener('click', function () {
+    getTeamData(teamBFormObjects[0].value, teamBFormObjects[1].value, teamBFormObjects[2].value, teamBPlaceholderObjects)
+});
+/* 
+teamAFormObjects[2].addEventListener('focus', function () {
+    getTeamEvents(teamAFormObjects[0].value, teamAFormObjects[1].value);
+});
+
+teamBFormObjects[2].addEventListener('focus', function () {
+    getTeamEvents(teamAFormObjects[0].value, teamAFormObjects[1].value);
+}); */
 
 
 // Essential Functions
@@ -114,7 +135,6 @@ function setImage(data, team) {
     }
     // robotImage.src = data[1].direct_url;
     console.log(data[1].direct_url);
-    teamAIds[0].src = data[1].direct_url;
     team[0].src = data[1].direct_url;
 }
 
