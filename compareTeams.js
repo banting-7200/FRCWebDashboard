@@ -255,6 +255,7 @@ function initIcons() {
 
 document.getElementById('themeSwitcher').addEventListener('click', () => {
     if (document.documentElement.getAttribute('data-bs-theme') == 'dark') {
+        notifiationToast("Switching to light mode", 3000);
         document.documentElement.setAttribute('data-bs-theme', 'light')
         document.getElementById('qrCodeExport').style.color = "black";
         document.getElementById('dashContainer').style.color = "black";
@@ -262,6 +263,7 @@ document.getElementById('themeSwitcher').addEventListener('click', () => {
         document.getElementById('themeSwitcherIcon').innerHTML = "dark_mode";
     }
     else {
+        notifiationToast("Switching to dark mode", 3000);
         document.documentElement.setAttribute('data-bs-theme', 'dark')
         document.getElementById('qrCodeExport').style.color = "white";
         document.getElementById('dashContainer').style.color = "white";
