@@ -123,7 +123,7 @@ function setStatbotics(data, team) {
         successToast("Success getting Statbotics data", 3000)
     }
     console.log(data);
-    team[6].innerHTML = data.epa.breakdown.total_points.mean;
+    team[6].innerHTML = data.epa.breakdown.total_points;
 
     fadeAnimation(team[6]);
 }

@@ -207,10 +207,10 @@ function setStatbotics(data) {
     checkAutoPoints(data);
     checkTeleopPoints(data);
     checkEndgamePoints(data);
-    epa.value = data.epa.breakdown.total_points.mean;
-    autoPoints.value = data.epa.breakdown.auto_points.mean;
-    telePoints.value = data.epa.breakdown.teleop_points.mean;
-    endgamePoints.value = data.epa.breakdown.endgame_points.mean;
+    epa.value = data.epa.breakdown.total_points;
+    autoPoints.value = data.epa.breakdown.auto_points;
+    telePoints.value = data.epa.breakdown.teleop_points;
+    endgamePoints.value = data.epa.breakdown.endgame_points;
     fadeAnimation(epa);
     fadeAnimation(autoPoints);
     fadeAnimation(telePoints);
@@ -285,59 +285,59 @@ function checkRank(data) {
 
 
 function checkEPA(data) {
-    if (previousEpa > data.epa.breakdown.total_points.mean) {
-        epa.innerHTML = data.epa.breakdown.total_points.mean;
-        previousEpa = data.epa.breakdown.total_points.mean;
+    if (previousEpa > data.epa.breakdown.total_points) {
+        epa.innerHTML = data.epa.breakdown.total_points;
+        previousEpa = data.epa.breakdown.total_points;
         setBackgrounds('identifierEPA', 'epa', 'down');
-    } else if (previousEpa < data.epa.breakdown.total_points.mean) {
-        epa.innerHTML = data.epa.breakdown.total_points.mean;
-        previousEpa = data.epa.breakdown.total_points.mean;
+    } else if (previousEpa < data.epa.breakdown.total_points) {
+        epa.innerHTML = data.epa.breakdown.total_points;
+        previousEpa = data.epa.breakdown.total_points;
         setBackgrounds('identifierEPA', 'epa', 'up');
     } else {
-        epa.innerHTML = data.epa.breakdown.total_points.mean;
+        epa.innerHTML = data.epa.breakdown.total_points;
     }
 }
 
 function checkAutoPoints(data) {
-    if (previousAutoPoints > data.epa.breakdown.auto_points.mean) {
-        autoPoints.innerHTML = data.epa.breakdown.auto_points.mean;
-        previousAutoPoints = data.epa.breakdown.auto_points.mean;
+    if (previousAutoPoints > data.epa.breakdown.auto_points) {
+        autoPoints.innerHTML = data.epa.breakdown.auto_points;
+        previousAutoPoints = data.epa.breakdown.auto_points;
         setBackgrounds('identifierAuto', 'autoPoints', 'down');
-    } else if (previousAutoPoints < data.epa.breakdown.auto_points.mean) {
-        autoPoints.innerHTML = data.epa.breakdown.auto_points.mean;
-        previousAutoPoints = data.epa.breakdown.auto_points.mean;
+    } else if (previousAutoPoints < data.epa.breakdown.auto_points) {
+        autoPoints.innerHTML = data.epa.breakdown.auto_points;
+        previousAutoPoints = data.epa.breakdown.auto_points;
         setBackgrounds('identifierAuto', 'autoPoints', 'up');
     } else {
-        autoPoints.innerHTML = data.epa.breakdown.auto_points.mean;
+        autoPoints.innerHTML = data.epa.breakdown.auto_points;
     }
 
 }
 
 function checkTeleopPoints(data) {
-    if (previoustelePoints > data.epa.breakdown.teleop_points.mean) {
-        telePoints.innerHTML = data.epa.breakdown.teleop_points.mean;
-        previoustelePoints = data.epa.breakdown.teleop_points.mean;
+    if (previoustelePoints > data.epa.breakdown.teleop_points) {
+        telePoints.innerHTML = data.epa.breakdown.teleop_points;
+        previoustelePoints = data.epa.breakdown.teleop_points;
         setBackgrounds('identifierTeleop', 'telePoints', 'down');
-    } else if (previoustelePoints < data.epa.breakdown.teleop_points.mean) {
-        telePoints.innerHTML = data.epa.breakdown.teleop_points.mean;
-        previoustelePoints = data.epa.breakdown.teleop_points.mean;
+    } else if (previoustelePoints < data.epa.breakdown.teleop_points) {
+        telePoints.innerHTML = data.epa.breakdown.teleop_points;
+        previoustelePoints = data.epa.breakdown.teleop_points;
         setBackgrounds('identifierTeleop', 'telePoints', 'up');
     } else {
-        telePoints.innerHTML = data.epa.breakdown.teleop_points.mean;
+        telePoints.innerHTML = data.epa.breakdown.teleop_points;
     }
 }
 
 function checkEndgamePoints(data) {
-    if (previousEndgamePoints > data.epa.breakdown.endgame_points.mean) {
-        endgamePoints.innerHTML = data.epa.breakdown.endgame_points.mean;
-        previousEndgamePoints = data.epa.breakdown.endgame_points.mean;
+    if (previousEndgamePoints > data.epa.breakdown.endgame_points) {
+        endgamePoints.innerHTML = data.epa.breakdown.endgame_points;
+        previousEndgamePoints = data.epa.breakdown.endgame_points;
         setBackgrounds('identifierEndgame', 'endgamePoints', 'down');
-    } else if (previousEndgamePoints < data.epa.breakdown.endgame_points.mean) {
-        endgamePoints.innerHTML = data.epa.breakdown.endgame_points.mean;
-        previousEndgamePoints = data.epa.breakdown.endgame_points.mean;
+    } else if (previousEndgamePoints < data.epa.breakdown.endgame_points) {
+        endgamePoints.innerHTML = data.epa.breakdown.endgame_points;
+        previousEndgamePoints = data.epa.breakdown.endgame_points;
         setBackgrounds('identifierEndgame', 'endgamePoints', 'up');
     } else {
-        endgamePoints.innerHTML = data.epa.breakdown.endgame_points.mean;
+        endgamePoints.innerHTML = data.epa.breakdown.endgame_points;
     }
 }
 
